@@ -1,12 +1,25 @@
 import { StyleSheet } from 'react-native';
 import CategoriesScreen from './screens/CategoriesScreen';
 import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer } from '@react-navigation/native';
+// Native stack uses native stack animations and puts views on top of each other. Stack emulates the stacking
+// call fallback to it when there are problems with Native-stack
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import MealsOverviewScreen from './screens/MealsOverviewScreen';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <>
-      <StatusBar style="light" />
-      <CategoriesScreen />
+      <StatusBar style="dark" />
+      <NavigationContainer>
+        {/**FRANK NOTE The first child will be the default screen. But you can use initialRouteName */}
+        <Stack.Navigator initialRouteName="MealsCategories">
+          <Stack.Screen name="MealsCategories" component={CategoriesScreen} />
+          <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </>
   );
 }
