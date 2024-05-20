@@ -12,7 +12,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <NavigationContainer>
         {/**FRANK NOTE The first child will be the default screen. But you can use initialRouteName */}
         {/** Apply the styles to all the screens by setting screenOptions in Stack.Navigator */}
@@ -32,7 +32,15 @@ export default function App() {
               title: 'All categories',
             }}
           />
-          <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
+          <Stack.Screen
+            name="MealsOverview"
+            component={MealsOverviewScreen}
+            // another way to pass route data to the screen
+            // options={({ route, navigation }) => {
+            //   const catId = route.params.categoryId;
+            //   return { title: catId };
+            // }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
