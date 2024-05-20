@@ -12,8 +12,15 @@ function MealsOverviewScreen({ route }) {
 
   // Automatically received it from renderItem
   function renderMealItem(itemdata) {
-    console.log(JSON.stringify(itemdata));
-    return <MealItem title={itemdata.item.title} />;
+    const item = itemdata.item;
+    const mealItemProps = {
+      title: item.title,
+      imageUrl: item.imageUrl,
+      duration: item.duration,
+      complexity: item.complexity,
+      affordability: item.affordability,
+    };
+    return <MealItem {...mealItemProps} />;
   }
 
   return (
